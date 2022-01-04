@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left,
+.right {
+  width: 40%;
+}
+
+.middle {
+  width: 20%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row .column label,
+textarea {
+  display: list-item;
+  list-style: none;
+}
+
+.row .column label {
+  margin: 100px auto 20px;
+  text-align: center;
+}
