@@ -4,25 +4,24 @@ import "./MainPage.css";
 const MainPage = () => {
   return (
     <div className="row">
-      <div className="column left" style={{ "background-color": "#F5F5F5" }}>
+      <div className="column left">
         <label htmlFor="content">Enter your transcript here: </label>
         <textarea
           id="content"
-          rows="20"
-          width="100%"
-          style={{ "overflow-y": "scroll" }}
+          rows="30"
+          style={{ "overflow-y": "scroll", width: "100%" }}
         />
       </div>
-      <div className="column middle">
-        <button>Summarize</button>
+      <div className="column middle" style={{ textAlign: "center" }}>
+        <button style={{ marginTop: "500px" }}>Summarize</button>
       </div>
-      <div className="column right" style={{ "background-color": "#F5F5F5." }}>
+      <div className="column right">
         <label htmlFor="contentSummary">Summary here : </label>
         <textarea
           id="contentSummary"
-          rows="20"
-          width="100%"
-          style={{ "overflow-y": "scroll" }}
+          rows="30"
+          style={{ "overflow-y": "scroll", width: "100%" }}
+          readOnly
         />
       </div>
     </div>
