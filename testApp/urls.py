@@ -14,4 +14,6 @@ urlpatterns = [
     path('user-update/<str:email>/', views.userUpdate, name="user-update"),
     path('user-delete/<str:email>/', views.userDelete, name="user-delete"),
     path('email-verify/', views.VerifyEmail.as_view(), name="email-verify"),
+    path('user-data/',views.userTextData, name="user-data"),
+    path('send-summary/',views.sendSummaryEmail, name="send-summary"),
 ]
