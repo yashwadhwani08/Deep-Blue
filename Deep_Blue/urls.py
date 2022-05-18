@@ -19,6 +19,7 @@ from .views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index)
+    path('', index),
+    path('api/', include("testApp.urls")),
     # path('/',include(Deep_Bue_App.urls))
 ]

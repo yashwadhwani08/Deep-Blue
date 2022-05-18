@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 
+import environ
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +31,7 @@ SECRET_KEY = 'django-insecure-usnd8recp0vg-6!lhc(^)ue$!d22naa_)7#5#ciak#vl4_9gh^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost',]
 
 
 # Application definition
@@ -38,9 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'testApp.apps.TestappConfig',
+    'rest_framework',
+    'corsheaders',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,6 +79,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'Deep_Blue.wsgi.application'
 
@@ -108,10 +119,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
 
@@ -127,3 +138,27 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "https://codepen.io",
+]
+
+AUTH_USER_MODEL = 'testApp.User'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+EMAIL_HOST_USER = 'test.summarygenerator@gmail.com'
+EMAIL_HOST_PASSWORD = 'MichaelScott777'
+
+REST_FRAMEWORK = {
+    'NON_FIELD_ERRORS_KEY': 'error',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
